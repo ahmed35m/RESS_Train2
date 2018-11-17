@@ -1,7 +1,6 @@
 package TrainManagement;
 
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.ArrayList;
 
 public class Train {
 	
@@ -10,65 +9,97 @@ public class Train {
 	private double redZone; 
 	private double yellowZone; 
 	private double blueZone;
-	private List<Cart> cart;
-	private static AtomicInteger trainId = new AtomicInteger(11111); 
-	
+	private ArrayList<Cart> carts;
+	private int trainId; 
+	private double speed;
+
 	public Train()
 	{
-		trainId = trainId.incrementAndGet();
+		trainId = 0;
+		carts = new ArrayList<Cart>();
+		location = 0;
+		length = 0;
+		
+	}
+	public Train(int trainId, ArrayList<Cart> carts, int location, double speed)
+	{
+		this.trainId = trainId;
+		this.carts = carts;
+		this.location = location;
+		this.speed = speed;
+		this.CalculateLength();
 	}
 	enum states 
 	{
 		INMOTION, IDLE, OOS, EMR
 	}
 	
-	public double getLength()
-	{
+	public double getLength() {
 		return length;
 	}
-	
-	public int getLocation()
-	{
+	public void setLength(double length) {
+		this.length = length;
+	}
+	public int getLocation() {
 		return location;
 	}
-	
-	public double getRedZone()
-	{
+	public void setLocation(int location) {
+		this.location = location;
+	}
+	public double getRedZone() {
 		return redZone;
 	}
-	
-	public double getYellowZone()
-	{
+	public void setRedZone(double redZone) {
+		this.redZone = redZone;
+	}
+	public double getYellowZone() {
 		return yellowZone;
 	}
-	
-	public double blueZone()
-	{
+	public void setYellowZone(double yellowZone) {
+		this.yellowZone = yellowZone;
+	}
+	public double getBlueZone() {
 		return blueZone;
 	}
-	
-	public void setLength(double newLength)
-	{
-		length = newLength;
+	public void setBlueZone(double blueZone) {
+		this.blueZone = blueZone;
 	}
-
-	public void setLocation(int newLocation)
-	{
-		location = newLocation;
+	public ArrayList<Cart> getCarts() {
+		return carts;
 	}
-	
-	public void setRedZone(double newRedZone)
-	{
-		redZone = newRedZone;
+	public void setCarts(ArrayList<Cart> carts) {
+		this.carts = carts;
 	}
-	
-	public void setYellowZone (double newYellowZone)
-	{
-		yellowZone = newYellowZone;
+	public int getTrainId() {
+		return trainId;
 	}
-	
-	public void setBlueZone (double newBlueZone)
+	public void setTrainId(int trainId) {
+		this.trainId = trainId;
+	}
+	public double getSpeed() {
+		return speed;
+	}
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+	public void CalculateLength()
 	{
-		blueZone = newBlueZone;
+		double sum =0;
+		for(int i=0; i< this.carts.size();i++)
+		{
+			sum += carts.get(i).getLength();
+		}
+		this.length = sum;
+	}
+	public void CalculateBlueZone()
+	{
+	}
+	public void CalculateRedZone()
+	{
+		
+	}
+	public void CalculateYellowZone()
+	{
+		
 	}
 }

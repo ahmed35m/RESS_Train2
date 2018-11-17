@@ -3,18 +3,22 @@
  */
 package TrainManagement;
 
+import java.util.ArrayList;
+
 /**
  * @author Ahmed
  *
  */
 public class ControlPanel {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	private ArrayList<Train> trains;
+	
+	public ControlPanel() {
+		trains = new ArrayList<Train>();
 	}
-
+	
+	public ControlPanel(ArrayList<Train> trains)
+	{
+		this.trains = trains;
+	}
+	
 }
